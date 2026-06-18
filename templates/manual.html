@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manual Student Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="back-container">
+        <a href="/">
+            <button class="back-btn">⬅ Home</button>
+        </a>
+    </div>
+
+    <h1>Manual Student Analysis</h1>
+
+    <div class="card">
+
+        <form method="POST" class="manual-form">
+
+            <input type="number"
+                   name="english"
+                   placeholder="English Marks"
+                   required>
+
+            <input type="number"
+                   name="maths"
+                   placeholder="Maths Marks"
+                   required>
+
+            <input type="number"
+                   name="biology"
+                   placeholder="Biology Marks"
+                   required>
+
+            <input type="number"
+                   name="chemistry"
+                   placeholder="Chemistry Marks"
+                   required>
+
+            <input type="number"
+                   name="physics"
+                   placeholder="Physics Marks"
+                   required>
+
+            <input type="number"
+                   name="computer"
+                   placeholder="Computer Applications Marks"
+                   required>
+
+            <input type="number"
+                   name="income"
+                   placeholder="Family Income"
+                   required>
+
+            <select name="caste" required>
+
+                <option value="">Select Caste</option>
+
+                <option value="General">General</option>
+
+                <option value="OBC">OBC</option>
+
+                <option value="SC">SC</option>
+
+                <option value="ST">ST</option>
+
+                <option value="EWS">EWS</option>
+
+            </select>
+
+            <button type="submit" class="analyze-btn">
+                Analyze Student
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if result %}
+
+    <div class="card">
+
+        <h2>Analysis Result</h2>
+
+        <p><strong>Percentage:</strong> {{ result.percentage }}%</p>
+
+        <p><strong>Grade:</strong> {{ result.grade }}</p>
+
+        <hr>
+
+        <h3>
+            Eligible Scholarships
+            ({{ result.scholarship_count }})
+        </h3>
+
+        {% if result.scholarships %}
+
+        <ul>
+
+            {% for scholarship in result.scholarships %}
+
+            <li>
+                {{ scholarship.name }}
+                - ₹{{ scholarship.amount }}
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p class="no-scholarship">
+            No Scholarship Eligible
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

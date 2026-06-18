@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Performance Analyzer</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="roll_number"
+            placeholder="Enter Roll Number"
+            required>
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="card">
+
+        <h2>Student Report</h2>
+
+        <p><strong>Name:</strong> {{ result.name }}</p>
+
+        <p><strong>Roll Number:</strong> {{ result.roll }}</p>
+
+        <p><strong>Attendance:</strong> {{ result.attendance }}%</p>
+
+        <p><strong>Income:</strong> ₹{{ result.income }}</p>
+
+        <p><strong>Caste:</strong> {{ result.caste }}</p>
+
+        <p><strong>Total Marks:</strong> {{ result.total }}</p>
+
+        <p><strong>Percentage:</strong> {{ result.percentage }}%</p>
+
+        <p><strong>Grade:</strong> {{ result.grade }}</p>
+
+        <hr>
+
+        <h3>
+            Eligible Scholarships ({{ result.scholarship_count }})
+        </h3>
+
+        {% if result.scholarships %}
+
+        <ul>
+
+            {% for scholarship in result.scholarships %}
+
+            <li>
+                {{ scholarship.name }}
+                -
+                ₹{{ scholarship.amount }}
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p class="no-scholarship">
+        No Scholarship Eligible 
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

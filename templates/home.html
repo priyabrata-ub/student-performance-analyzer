@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎓 Student Performance Analyzer</h1>
+
+    <div class="card">
+
+        <h2>Select Analysis Mode</h2>
+
+        <div class="option-container">
+
+            <a href="/dataset" class="option-card">
+
+                <h3>📊 Existing Dataset</h3>
+
+                <p>
+                    Analyze a student using
+                    the existing dataset by
+                    entering Roll Number.
+                </p>
+
+            </a>
+
+            <a href="/manual" class="option-card">
+
+                <h3>📝 Manual Input</h3>
+
+                <p>
+                    Enter marks, income and caste
+                    manually and get performance
+                    analysis and scholarship eligibility.
+                </p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
