@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import pandas as pd
-import webbrowser
 
 app = Flask(__name__)
 
@@ -199,5 +198,4 @@ def manual():
 
 
 if __name__ == "__main__":
-    webbrowser.open("http://127.0.0.1:5000")
     app.run(debug=True, use_reloader=False)
